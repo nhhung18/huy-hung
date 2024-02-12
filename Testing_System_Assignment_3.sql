@@ -82,13 +82,13 @@ create table `ExamQuestion`(
 insert into Department (DepartmentName) values
 	('Engineering'),
 	('Legal'),
-	('Engineering'),
-	('Engineering'),
+	('Human resources'),
+	('Information technology'),
 	('Marketing'),
 	('Business Development'),
 	('Services'),
 	('Accounting'),
-	('Legal'),
+	('Sales'),
 	('Product Management');
     
 -- 2.Add data to position
@@ -106,7 +106,7 @@ insert into `Position` (PositionName) values
     
 -- 3.Add data to account
 insert into `Account` (Email, Username, Fullname, DepartmentID, PositionID) values 
-	('aitzak0@de.vu', 'aitzak0', 'Annis Itzak', null, 1),
+	('aitzak0@de.vu', 'Ditzako', 'Dnniotzao', null, 1),
 	('thoopper1@shop-pro.jp', 'thoopper1', 'Tabbie Hoopper', null, 9),
 	('mtremoille2@auda.org.au', 'mtremoille2', 'Melitta Tremoille', 9, 3),
 	('blamberto3@java.com', 'blamberto3', 'Boyd Lamberto', 1, 9),
@@ -843,7 +843,42 @@ insert into ExamQuestion(ExamID, QuestionID) values
 	(98, 98),
 	(99, 99),
 	(100,100);
+-- Q2
+select * from `Department`;
 
-	
+-- Q3:
+select `DepartmentID` from `Department` where `DepartmentName` = 'Sales';
+
+-- Q4:
+select AccountID, Email, Username, Fullname, DepartmentID, PositionID, CreateDate from `Account` order by length(Fullname) desc; -- Sap xep tu cao xuong thap dung desc
+
+-- Q5: 
+select AccountID, Email, Username, Fullname, DepartmentID, PositionID, CreateDate from `Account` where `DepartmentID` = 3 order by length(Fullname) desc;
+
+-- Q6:
+ select `GroupName` from `Group` where `CreateDate` <= 2019-12-20;
+
+-- Q7:
 
 
+-- Q8:
+ select `Code` from `Exam` where `Duration` >= 60 and `CreateDate` <= 2019-12-20;
+
+-- Q9: 
+ select `GroupName` from `Group` order by `CreateDate` desc;
+
+-- Q10:
+select count(`AccountID`) from `Account` where `DepartmentID` = 2;
+
+-- Q11:
+SELECT * FROM `Account` WHERE `Fullname` LIKE 'D%o';
+
+-- Q12: 
+
+-- Q13:
+
+-- Q14:
+update `Account` set `Email` = 'loc.nguyenba@vti.com.vn', `Fullname` = 'Nguyen Ba Loc' where `AccountID` = 5;
+
+-- Q15:
+update `GroupAccount` set `GroupID` = 4 where `AccountID` = 5;
